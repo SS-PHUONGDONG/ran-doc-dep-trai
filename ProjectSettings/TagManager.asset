@@ -14,6 +14,7 @@ TagManager:
   - Coint
   - Coin
   - Next
+  - Audio
   layers:
   - Default
   - TransparentFX
