@@ -30,27 +30,27 @@ public class GameLauncher : MonoBehaviour, INetworkRunnerCallbacks
         StartGame(GameMode.Shared);
     }
     async void StartGame(GameMode mode)
-{
-    if (networkRunner == null)
-        networkRunner = gameObject.AddComponent<NetworkRunner>();
-
-    networkRunner.ProvideInput = true;
-    networkRunner.AddCallbacks(this);
-
-    var scene = SceneRef.FromIndex(1);
-    var sceneInfo = new NetworkSceneInfo();
-    if (scene.IsValid)
-        sceneInfo.AddSceneRef(scene, LoadSceneMode.Single);
-
-    var startGameArgs = new StartGameArgs()
     {
-        GameMode = mode,
-        SessionName = "Main Menu",
-        Scene = sceneInfo,
-        SceneManager = gameObject.AddComponent<NetworkSceneManagerDefault>()
-    };
-    await networkRunner.StartGame(startGameArgs);
-}
+        if (networkRunner == null)
+            networkRunner = gameObject.AddComponent<NetworkRunner>();
+
+        networkRunner.ProvideInput = true;
+        networkRunner.AddCallbacks(this);
+
+        var scene = SceneRef.FromIndex(1);
+        var sceneInfo = new NetworkSceneInfo();
+        if (scene.IsValid)
+            sceneInfo.AddSceneRef(scene, LoadSceneMode.Single);
+
+        var startGameArgs = new StartGameArgs()
+        {
+            GameMode = mode,
+            SessionName = "The Survival Warriors",
+            Scene = sceneInfo,
+            SceneManager = gameObject.AddComponent<NetworkSceneManagerDefault>()
+        };
+        await networkRunner.StartGame(startGameArgs);
+    }
 
     public void OnConnectedToServer(NetworkRunner runner)
     {
