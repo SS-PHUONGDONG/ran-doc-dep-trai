@@ -10,20 +10,20 @@ public class SceneLoading : MonoBehaviour
     [SerializeField] private Slider loadingSlider; // (Tuỳ chọn) Slider hiển thị tiến trình
 
     // Hàm để bắt đầu tải scene
-    public void LoadScene(string sceneName)
+    public void LoadScene(string Host)
     {
         // Hiển thị Loading Panel
         loadingPanel.SetActive(true);
 
         // Bắt đầu Coroutine để tải scene
-        StartCoroutine(LoadSceneAsync(sceneName));
+        StartCoroutine(LoadSceneAsync(Host));
     }
 
     // Coroutine để tải scene
-    IEnumerator LoadSceneAsync(string sceneName)
+    IEnumerator LoadSceneAsync(string Host)
     {
         // Bắt đầu tải scene
-        AsyncOperation asyncLoad = SceneManager.LoadSceneAsync(sceneName);
+        AsyncOperation asyncLoad = SceneManager.LoadSceneAsync(Host);
 
         // Đảm bảo scene không được load đồng thời (đợi khi hoàn tất)
         asyncLoad.allowSceneActivation = false;
